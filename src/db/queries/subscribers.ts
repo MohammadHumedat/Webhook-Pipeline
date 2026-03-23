@@ -11,7 +11,7 @@ export async function createSubscriber(pipelineId: string, url: string) {
 }
 
 export async function getSubscribersByPipelineId(pipelineId: string) {
-  const [result] = await db
+  const result = await db
     .select()
     .from(subscribers)
     .where(eq(subscribers.pipelineId, pipelineId));
