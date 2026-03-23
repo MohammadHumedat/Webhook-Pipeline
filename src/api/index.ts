@@ -7,6 +7,7 @@ import {
   ConflictError,
   BadRequestError,
 } from "../shared/errors.js";
+import { subscribersRouter } from "./routes/subscribers.js";
 
 import type { Request, Response, NextFunction } from "express";
 import { error } from "node:console";
@@ -17,7 +18,7 @@ const Port = process.env.PORT || 3000;
 app.use(express.json());
 
 //routes: to implement modular routing principle
-
+app.use("/api/pipelines/:pipelineId/subscribers", subscribersRouter);
 app.use("/api/pipelines", pipelinesRouter);
 app.use("/webhooks", webhooksRouter);
 app.use("/api/jobs", jobsRouter);
